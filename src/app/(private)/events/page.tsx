@@ -1,5 +1,10 @@
+import { UserButton } from "@clerk/nextjs";
+
 export default function EventsPage() {
   return (
-    <div>EventsPage</div>
+    <>
+      <h1>EventsPage</h1>
+      <UserButton />
+    </>   
   )
 }
