@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={cn(
-        'min-h-screen, bg-background, antialiased',
+        'min-h-screen',
         poppins.className
       )}>
         {children}
