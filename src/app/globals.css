@@ -1,6 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+25+Charted&family=Sankofa+Display&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  font-weight: 300;
+}
+
+.logo-1 {
+  font-family: 'Jersey 25 Charted', sans-serif;
+}
+
+.logo-2 {
+  font-family: 'Sankofa Display', sans-serif;
+}
+
+
 @layer base {
   :root {
     --background: 0 0% 100%;
