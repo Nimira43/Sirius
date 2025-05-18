@@ -1,4 +1,7 @@
-import { UserButton } from "@clerk/nextjs";
+import { UserButton } from '@clerk/nextjs'
+import { clerkMiddleware } from '@clerk/nextjs/server'
+
+export default clerkMiddleware
 
 export default function EventsPage() {
   return (
