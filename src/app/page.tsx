@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { SignInButton, SignUpButton } from '@clerk/nextjs'
+import { SignInButton, SignUpButton, UserButton } from '@clerk/nextjs'
 
 export default function Sirius() {
   return (
@@ -12,6 +12,7 @@ export default function Sirius() {
         <Button className='uppercase' asChild>
           <SignUpButton />
         </Button>
+        <UserButton />
       </div>
     </div>
   )
