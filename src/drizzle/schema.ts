@@ -1,4 +1,4 @@
-import { boolean, integer, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
+import { boolean, index, integer, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
 
 const createdAt = timestamp('createdAt').notNull().defaultNow()
 const updatedAt = timestamp('updatedAt')
@@ -16,7 +16,9 @@ export const EventTable = pgTable('events', {
   isActive: boolean('isActive').notNull().default(true),
   createdAt,
   updatedAt
-})
+}, table => ({
+  clerkUserIndex: index('clerkUserIdIndex').on(table.clerkUserId)
+}) )
 
 export const ScheduleTable = pgTable('schedules', {
 })
