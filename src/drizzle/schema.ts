@@ -17,3 +17,6 @@ export const EventTable = pgTable('events', {
   createdAt,
   updatedAt
 })
+
+export const ScheduleTable = pgTable('schedules', {
+})
