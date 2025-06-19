@@ -27,3 +27,13 @@ export const ScheduleTable = pgTable('schedules', {
   createdAt,
   updatedAt
 })
+
+export const ScheduleAvailabilityTable = pgTable('scheduleAvailabilities', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  scheduleId: uuid('scheduleId')
+    .notNull()
+    .references(() => ScheduleTable.id, { onDelete: 'cascade'}),
+  startTime: text('startTime').notNull(),
+  endTime: text('endTime').notNull(),
+  dayOfWeek: scheduleDayOfWeekEnum('dayOfWeek').notNull()
+})
