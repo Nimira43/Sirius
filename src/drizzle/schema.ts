@@ -1,4 +1,4 @@
-import { boolean, index, integer, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
+import { boolean, index, integer, pgEnum, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
 
 const createdAt = timestamp('createdAt').notNull().defaultNow()
 const updatedAt = timestamp('updatedAt')
@@ -27,6 +27,8 @@ export const ScheduleTable = pgTable('schedules', {
   createdAt,
   updatedAt
 })
+
+export const scheduleDayOfWeekEnum = pgEnum('day')
 
 export const ScheduleAvailabilityTable = pgTable('scheduleAvailabilities', {
   id: uuid('id').primaryKey().defaultRandom(),
