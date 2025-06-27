@@ -20,6 +20,7 @@ module.exports = {
 				'main-light': '#689ef4',
 				'main-light-extra': '#b9c2f5',
 				'support': '#f7ee4a',
+				'gold': '#ffd700',
 				'dark': '#111',
 				'light': '#fffffc',
 				'grey-dark': '#333',
