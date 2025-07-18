@@ -1,4 +1,5 @@
 import { DAYS_OF_WEEK_IN_ORDER } from '@/data/constants'
+import { relations } from 'drizzle-orm'
 import { boolean, index, integer, pgEnum, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
 
 const createdAt = timestamp('createdAt').notNull().defaultNow()
@@ -28,6 +29,10 @@ export const ScheduleTable = pgTable('schedules', {
   createdAt,
   updatedAt
 })
+
+export const scheduleRelations = relations(ScheduleTable, () => ({
+  
+}))
 
 export const scheduleDayOfWeekEnum = pgEnum('day', DAYS_OF_WEEK_IN_ORDER)
 
