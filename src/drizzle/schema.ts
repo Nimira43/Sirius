@@ -1,3 +1,4 @@
+
 import { DAYS_OF_WEEK_IN_ORDER } from '@/data/constants'
 import { relations } from 'drizzle-orm'
 import { boolean, index, integer, pgEnum, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
@@ -36,14 +37,23 @@ export const scheduleRelations = relations(ScheduleTable, ({ many }) => ({
 
 export const scheduleDayOfWeekEnum = pgEnum('day', DAYS_OF_WEEK_IN_ORDER)
 
-export const ScheduleAvailabilityTable = pgTable('scheduleAvailabilities', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  scheduleId: uuid('scheduleId')
-    .notNull()
-    .references(() => ScheduleTable.id, { onDelete: 'cascade'}),
-  startTime: text('startTime').notNull(),
-  endTime: text('endTime').notNull(),
-  dayOfWeek: scheduleDayOfWeekEnum('dayOfWeek').notNull()
-}, table => ({
-  scheduleIdIndex: index('scheduleIdIndex').on(table.scheduleId)
+export const ScheduleAvailabilityTable = pgTable(
+  'scheduleAvailabilities', {
+    id: uuid('id').primaryKey().defaultRandom(),
+    scheduleId: uuid('scheduleId')
+      .notNull()
+      .references(() => ScheduleTable.id, { onDelete: 'cascade'}),
+    startTime: text('startTime').notNull(),
+    endTime: text('endTime').notNull(),
+    dayOfWeek: scheduleDayOfWeekEnum('dayOfWeek').notNull()
+  }, table => ({
+    scheduleIdIndex: index('scheduleIdIndex').on(table.scheduleId)
+  })
+)
+
+export const ScheduleAvailabilityRelations = relations(ScheduleAvailabilityTable, ({ one }) => ({
+  schedule: one(ScheduleTable, {
+    fields: [ScheduleAvailabilityTable.scheduleId], 
+    references: [ScheduleTable.id]
+  })
 }))
