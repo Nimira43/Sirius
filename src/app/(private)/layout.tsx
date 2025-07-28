@@ -10,8 +10,8 @@ export default function PrivateLayout({ children }: { children: ReactNode} ) {
       <header className='flex py-2 border-b bg-card'>
         <nav className='font-medium flex items-center gap-6 container'>
           <div className='flex items-center gap-2 font-medium mr-auto'>
-            <GiPolarStar className='size-6 text-main'/>
-            <span className='logo text-main'>Sirius</span>
+            <GiPolarStar className='size-10 text-main'/>
+            <span className='logo text-main text-3xl'>Sirius</span>
           </div>
           <NavLink
             href='/events' 
