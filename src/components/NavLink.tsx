@@ -2,11 +2,18 @@
 
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { ComponentProps } from 'react'
 
-export default function NavLink() {
+export function NavLink({ className, ...props}: ComponentProps<typeof Link>) {
+  const path = usePathname()
+  const isActive = path == props.href
+  
   return (
-    <div>NavLink</div>
+    <Link
+      {...props}
+      className={cn()}
+    >
+    </Link>
   )
 }
