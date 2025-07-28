@@ -1,4 +1,4 @@
-import NavLink from '@/components/NavLink'
+import { NavLink } from '@/components/NavLink'
 import { UserButton } from '@clerk/nextjs'
 import { ReactNode } from 'react'
 import { GiPolarStar } from 'react-icons/gi'
