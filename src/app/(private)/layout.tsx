@@ -1,6 +1,8 @@
+import NavLink from '@/components/NavLink'
 import { UserButton } from '@clerk/nextjs'
 import { ReactNode } from 'react'
 import { GiPolarStar } from 'react-icons/gi'
+
 
 export default function PrivateLayout({ children }: { children: ReactNode} ) {
   return (
@@ -11,6 +13,16 @@ export default function PrivateLayout({ children }: { children: ReactNode} ) {
             <GiPolarStar className='size-6 text-main'/>
             <span className='logo text-main'>Sirius</span>
           </div>
+          <NavLink
+            href='/events' 
+          >
+            Events
+          </NavLink>
+          <NavLink
+            href='/schedule' 
+          >
+            Schedule
+          </NavLink>
           <div className='ml-auto size-10'>
             <UserButton 
               appearance={{ 
