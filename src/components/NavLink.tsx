@@ -12,7 +12,13 @@ export function NavLink({ className, ...props}: ComponentProps<typeof Link>) {
   return (
     <Link
       {...props}
-      className={cn()}
+      className={cn(
+        'transition-colors uppercase font-medium',
+        isActive
+          ? 'text-main'
+          : 'text-grey-dark hover:text-main',
+        className
+      )}
     >
     </Link>
   )
