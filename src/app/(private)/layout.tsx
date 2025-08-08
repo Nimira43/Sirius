@@ -3,7 +3,6 @@ import { UserButton } from '@clerk/nextjs'
 import { ReactNode } from 'react'
 import { GiPolarStar } from 'react-icons/gi'
 
-
 export default function PrivateLayout({ children }: { children: ReactNode} ) {
   return (
     <>
