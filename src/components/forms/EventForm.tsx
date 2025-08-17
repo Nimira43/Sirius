@@ -15,5 +15,9 @@ export function EventForm() {
     }
   })
 
+  function onSubmit(values: z.infer<typeof eventFormSchema>) {
+    console.log(values)
+  }
+  
   return null
 }
