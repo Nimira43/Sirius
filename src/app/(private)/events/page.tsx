@@ -2,14 +2,14 @@ import { Button } from '@/components/ui/button'
 import { db } from '@/drizzle/db'
 import { auth } from '@clerk/nextjs/server'
 import Link from 'next/link'
-import { BsCalendarCheck } from 'react-icons/bs'
+import { BsCalendarCheck, BsCalendar3 } from 'react-icons/bs'
 
 export default async function EventsPage() {
   const { userId, redirectToSignIn } = auth()
 
   if (userId == null) return redirectToSignIn()
 
-  const event = await db.query.EventTable.findMany({
+  const events = await db.query.EventTable.findMany({
     where: ({ clerkUserId }, { eq }) => eq(clerkUserId, userId),
     orderBy: ({ createdAt }, { desc }) => desc(createdAt),
   })
@@ -28,6 +28,14 @@ export default async function EventsPage() {
           </Link>
         </Button>
       </div>
+      {events.length > 0 
+        ? (<h1>Events</h1>) 
+        : (
+          <div>
+            <BsCalendar3 />
+          </div>
+        )
+      }
     </>   
   )
 }
