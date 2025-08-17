@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod' 
 import { eventFormSchema } from '@/schema/events'
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel } from '../ui/form'
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '../ui/form'
 import { Input } from '../ui/input'
 
 export function EventForm() {
@@ -26,15 +26,16 @@ export function EventForm() {
         <FormField
           control={form.control}
           name='name'
-          render={() => (
+          render={({field}) => (
             <FormItem>
               <FormLabel>Event Name</FormLabel>
               <FormControl>
-                <Input />
+                <Input {...field} />
               </FormControl>
               <FormDescription>
-                Name users see when booking
+                Name users see when booking.
               </FormDescription>
+              <FormMessage />
             </FormItem>
           )}
         />
