@@ -1,12 +1,15 @@
 import { Button } from '@/components/ui/button'
+import { db } from '@/drizzle/db'
 import Link from 'next/link'
 import { BsCalendarCheck } from 'react-icons/bs'
 
-export default function EventsPage() {
+export default async function EventsPage() {
+  const event = await db
+
   return (
     <>
-      <div>
-        <h1 className='text-3xl lg:text-4xl xl:text-5xl uppercase font-medium text-main mb-6'>Events</h1>
+      <div className='flex gap-4 items-baseline'>
+        <h1 className='text-3xl lg:text-4xl xl:text-5xl font-medium text-main mb-6'>Events</h1>
         <Button asChild>
           <Link 
             className='uppercase'
