@@ -24,7 +24,10 @@ export function EventForm() {
   
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form 
+        onSubmit={form.handleSubmit(onSubmit)}
+        className='flex gap-6 flex-col'
+      >
         <FormField
           control={form.control}
           name='name'
@@ -36,6 +39,25 @@ export function EventForm() {
               </FormControl>
               <FormDescription>
                 Name users see when booking.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name='durationInMinutes'
+          render={({field}) => (
+            <FormItem>
+              <FormLabel>Duration In Minutes</FormLabel>
+              <FormControl>
+                <Input 
+                  type='number'
+                  {...field} 
+                />
+              </FormControl>
+              <FormDescription>
+                Please state time in minutes.
               </FormDescription>
               <FormMessage />
             </FormItem>
