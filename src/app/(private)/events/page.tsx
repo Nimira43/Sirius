@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { BsCalendarCheck } from 'react-icons/bs'
 
 export default async function EventsPage() {
-  const event = await db
+  const event = await db.query.EventTable
 
   return (
     <>
