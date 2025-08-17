@@ -6,6 +6,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { eventFormSchema } from '@/schema/events'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '../ui/form'
 import { Input } from '../ui/input'
+import { Button } from '../ui/button'
+import Link from 'next/link'
 
 export function EventForm() {
   const form = useForm<z.infer<typeof eventFormSchema>>({
@@ -39,6 +41,26 @@ export function EventForm() {
             </FormItem>
           )}
         />
+        <div className='flex gap-2 justify-end'>
+          <Button 
+            type='button'
+            asChild 
+            variant='outline'
+            className='uppercase'
+          >
+            <Link href='/events'>Cancel</Link>
+          </Button>
+          <Button 
+            type='submit'
+            className='uppercase'
+          >
+            <Link 
+              href='/events'
+            >
+              Submit
+            </Link>
+          </Button>
+        </div>
       </form>
     </Form>
   )
