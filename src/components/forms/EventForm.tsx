@@ -8,10 +8,12 @@ const schema = z.object({
 
 export default function EventForm() {
   const form = useForm<z.infer<typeof schema>>({
-    resolver: zodResolver(schema)
+    resolver: zodResolver(schema),
+    defaultValues: {
+      isActive: true,
+      durationInMinutes: 30
+    }
   })
 
-  return (
-    <div>EventForm</div>
-  )
+  return null
 }
