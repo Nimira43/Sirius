@@ -1,11 +1,16 @@
 import { Button } from '@/components/ui/button'
 import { db } from '@/drizzle/db'
+import { auth } from '@clerk/nextjs/server'
 import Link from 'next/link'
 import { BsCalendarCheck } from 'react-icons/bs'
 
 export default async function EventsPage() {
+  const { userId, redirectToSignIn } = auth()
+
+  if (userId == null) return redirectToSignIn()
+
   const event = await db.query.EventTable.findMany({
-    where: ({ }, { })
+    where: ({ clerkUserId }, { eq }) => eq(clerkUserId, userId)
   })
 
   return (
