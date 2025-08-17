@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod' 
 import { eventFormSchema } from '@/schema/events'
-import { Form } from '../ui/form'
+import { Form, FormField, FormItem, FormLabel } from '../ui/form'
 
 export function EventForm() {
   const form = useForm<z.infer<typeof eventFormSchema>>({
@@ -22,7 +22,15 @@ export function EventForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-
+        <FormField
+          control={form.control}
+          name='name'
+          render={() => (
+            <FormItem>
+              <FormLabel></FormLabel>
+            </FormItem>
+          )}
+        />
       </form>
     </Form>
   )
