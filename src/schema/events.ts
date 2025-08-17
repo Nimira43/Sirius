@@ -8,5 +8,5 @@ export const eventFormSchema = z.object({
     .number()
     .int()
     .positive('Duration must be greater than 0.')
-    .max(60 * 12, 'Duration must be less than 12 hours.')
+    .max(60 * 12, 'Duration must be less than 720 minutes.')
 })
