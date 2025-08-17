@@ -8,6 +8,7 @@ export default function NewEventPage() {
         <CardTitle>New Event</CardTitle>
       </CardHeader>
       <CardContent>
+        <EventForm />
       </CardContent>     
     </Card>
   )
