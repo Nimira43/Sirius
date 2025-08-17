@@ -10,7 +10,8 @@ export default async function EventsPage() {
   if (userId == null) return redirectToSignIn()
 
   const event = await db.query.EventTable.findMany({
-    where: ({ clerkUserId }, { eq }) => eq(clerkUserId, userId)
+    where: ({ clerkUserId }, { eq }) => eq(clerkUserId, userId),
+    orderBy: ({ createdAt }, { desc }) => desc(createdAt),
   })
 
   return (
