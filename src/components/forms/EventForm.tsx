@@ -96,9 +96,10 @@ export function EventForm() {
                     onCheckedChange={field.onChange}
                   />
                 </FormControl>  
+                <FormLabel>Active</FormLabel>
               </div>
               <FormDescription>
-                Description of the event (optional).
+                Inactive events will not be visible for users to book.
               </FormDescription>
               <FormMessage />
             </FormItem>
