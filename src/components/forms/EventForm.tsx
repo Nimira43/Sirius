@@ -9,6 +9,7 @@ import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 import Link from 'next/link'
 import { Textarea } from '../ui/textarea'
+import { Switch } from '../ui/switch'
 
 export function EventForm() {
   const form = useForm<z.infer<typeof eventFormSchema>>({
@@ -88,13 +89,14 @@ export function EventForm() {
           name='isActive'
           render={({field}) => (
             <FormItem>
-              <FormLabel>Description</FormLabel>
-              <FormControl>
-                <Textarea
-                  className='resize-none h-32'
-                  {...field} 
-                />
-              </FormControl>
+              <div className='flex items-center gap-2'>
+                <FormControl>
+                  <Switch 
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>  
+              </div>
               <FormDescription>
                 Description of the event (optional).
               </FormDescription>
