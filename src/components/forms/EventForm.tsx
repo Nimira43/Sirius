@@ -8,6 +8,7 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 import Link from 'next/link'
+import { Textarea } from '../ui/textarea'
 
 export function EventForm() {
   const form = useForm<z.infer<typeof eventFormSchema>>({
@@ -63,6 +64,25 @@ export function EventForm() {
             </FormItem>
           )}
         />
+        <FormField
+          control={form.control}
+          name='description'
+          render={({field}) => (
+            <FormItem>
+              <FormLabel>Description</FormLabel>
+              <FormControl>
+                <Textarea
+                  className='resize-none h-32'
+                  {...field} 
+                />
+              </FormControl>
+              <FormDescription>
+                Description of the event (optional).
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <div className='flex gap-2 justify-end'>
           <Button 
             type='button'
@@ -70,17 +90,17 @@ export function EventForm() {
             variant='outline'
             className='uppercase'
           >
-            <Link href='/events'>Cancel</Link>
+            <Link 
+              href='/events'
+            >
+              Cancel
+            </Link>
           </Button>
           <Button 
             type='submit'
             className='uppercase'
           >
-            <Link 
-              href='/events'
-            >
-              Submit
-            </Link>
+            Save
           </Button>
         </div>
       </form>
