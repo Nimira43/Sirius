@@ -83,6 +83,25 @@ export function EventForm() {
             </FormItem>
           )}
         />
+        <FormField
+          control={form.control}
+          name='isActive'
+          render={({field}) => (
+            <FormItem>
+              <FormLabel>Description</FormLabel>
+              <FormControl>
+                <Textarea
+                  className='resize-none h-32'
+                  {...field} 
+                />
+              </FormControl>
+              <FormDescription>
+                Description of the event (optional).
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <div className='flex gap-2 justify-end'>
           <Button 
             type='button'
