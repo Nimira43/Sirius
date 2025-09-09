@@ -21,9 +21,14 @@ export function CopyEventButton({
     <Button 
       {...buttonProps}
       onClick={() => {
-        navigator.clipboard.writeText(`
-          ${location.origin}/book/${clerkUserId}/${eventId}
-        `)
+        navigator.clipboard
+          .writeText(`
+            ${location.origin}/book/${clerkUserId}/${eventId}
+          `)
+          .then(() => {
+            setCopyState('copied')
+            setTimeout(() => setCopyState('idle'), 2000)
+          })
       }}
     >
       <CopyIcon className='size-4 mr-2' />
