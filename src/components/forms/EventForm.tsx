@@ -15,6 +15,8 @@ export function EventForm() {
   const form = useForm<z.infer<typeof eventFormSchema>>({
     resolver: zodResolver(eventFormSchema),
     defaultValues: {
+      name: '',  
+      description: '',      
       isActive: true,
       durationInMinutes: 30   
     }
@@ -51,7 +53,7 @@ export function EventForm() {
           name='durationInMinutes'
           render={({field}) => (
             <FormItem>
-              <FormLabel>Duration In Minutes</FormLabel>
+              <FormLabel>Duration</FormLabel>
               <FormControl>
                 <Input 
                   type='number'
