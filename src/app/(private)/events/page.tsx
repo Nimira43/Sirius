@@ -61,3 +61,12 @@ export default async function EventsPage() {
     </>   
   )
 }
+
+function EventCard({
+  id,
+  isActive,
+  name,
+  description,
+  durationInMinutes,
+  ClerkUserId
+})
