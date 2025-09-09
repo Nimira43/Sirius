@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { db } from '@/drizzle/db'
 import { formatEventDescription } from '@/lib/formatters'
 import { auth } from '@clerk/nextjs/server'
@@ -89,6 +89,9 @@ function EventCard({
           {formatEventDescription(durationInMinutes)}
         </CardDescription>
       </CardHeader>
+      {description != null &&  (
+        <CardContent>{description}</CardContent>
+      )}
     </Card>
   )
 }
