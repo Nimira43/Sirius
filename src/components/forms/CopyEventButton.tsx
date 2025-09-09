@@ -19,7 +19,8 @@ export function CopyEventButton({
 
   return (
     <Button {...buttonProps}>
-      <CopyIcon />
+      <CopyIcon className='size-4 mr-2' />
+      {getChildren(copyState)}
     </Button>
   )
 }
@@ -31,7 +32,6 @@ function getCopyIcon(copyState: CopyState) {
     case 'copied':
       return CopyCheck
     case 'error':
-      return CopyX
-    
+      return CopyX   
   }
 }
