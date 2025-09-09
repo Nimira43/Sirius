@@ -78,4 +78,4 @@ function EventCard({
   description,
   durationInMinutes,
   clerkUserId
-})
+}: EventCardProps) {}
