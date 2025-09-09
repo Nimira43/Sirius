@@ -10,6 +10,7 @@ import { Button } from '../ui/button'
 import Link from 'next/link'
 import { Textarea } from '../ui/textarea'
 import { Switch } from '../ui/switch'
+import { createEvent } from '@/server/actions/events'
 
 export function EventForm() {
   const form = useForm<z.infer<typeof eventFormSchema>>({
@@ -23,7 +24,7 @@ export function EventForm() {
   })
 
   function onSubmit(values: z.infer<typeof eventFormSchema>) {
-    console.log(values)
+    createEvent(values)
   }
   
   return (
