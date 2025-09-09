@@ -35,3 +35,14 @@ function getCopyIcon(copyState: CopyState) {
       return CopyX   
   }
 }
+
+function getChildren(copyState: CopyState) {
+  switch (copyState) {
+    case 'idle':
+      return 'Copy Link'
+    case 'copied':
+      return 'Copied'
+    case 'error':
+      return 'Error'   
+  }
+}
