@@ -10,6 +10,8 @@ import { z } from 'zod'
 
 export async function createEvent(unsafeData: z.infer<typeof eventFormSchema>) {
   const { userId } = auth()  
+
+  unsafeData.name = ''
   const { success, data} = eventFormSchema.safeParse(unsafeData)
 
   if (!success || userId == null) {
