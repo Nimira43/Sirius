@@ -26,7 +26,7 @@ export function EventForm() {
   async function onSubmit(values: z.infer<typeof eventFormSchema>) {
     const data = await createEvent(values)
 
-    if (data.error) {
+    if (data?.error) {
       form.setError('root', {
         message: 'There was an error saving your event.'
       })
@@ -39,6 +39,11 @@ export function EventForm() {
         onSubmit={form.handleSubmit(onSubmit)}
         className='flex gap-6 flex-col'
       >
+        {form.formState.errors.root && (
+          <div className='text-destructive text-sm'>
+            {form.formState.errors.root.message}
+          </div>
+        )}
         <FormField
           control={form.control}
           name='name'

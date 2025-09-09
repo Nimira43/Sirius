@@ -8,10 +8,10 @@ import { redirect } from 'next/navigation'
 import 'use-server'
 import { z } from 'zod'
 
-export async function createEvent(unsafeData: z.infer<typeof eventFormSchema>) {
+export async function createEvent(
+  unsafeData: z.infer<typeof eventFormSchema>
+): Promise<{ error: boolean | undefined }> {
   const { userId } = auth()  
-
-  unsafeData.name = ''
   const { success, data} = eventFormSchema.safeParse(unsafeData)
 
   if (!success || userId == null) {
