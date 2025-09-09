@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from "react"
-import { Button, ButtonProps } from "../ui/button"
+import { useState } from 'react'
+import { Button, ButtonProps } from '../ui/button'
+import { Copy, CopyCheck, CopyX } from "lucide-react"
 
 type CopyState = 'idle' | 'copied' | 'error'
 
@@ -18,7 +19,19 @@ export function CopyEventButton({
 
   return (
     <Button {...buttonProps}>
-
+      <CopyIcon />
     </Button>
   )
+}
+
+function getCopyIcon(copyState: CopyState) {
+  switch (copyState) {
+    case 'idle':
+      return Copy
+    case 'copied':
+      return CopyCheck
+    case 'error':
+      return CopyX
+    
+  }
 }
