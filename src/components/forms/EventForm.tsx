@@ -23,7 +23,7 @@ export function EventForm() {
     }
   })
 
-  function onSubmit(values: z.infer<typeof eventFormSchema>) {
+  async function onSubmit(values: z.infer<typeof eventFormSchema>) {
     createEvent(values)
   }
   
