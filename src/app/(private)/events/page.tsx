@@ -62,11 +62,20 @@ export default async function EventsPage() {
   )
 }
 
+type EventCardProps = {
+  id: string
+  isActive: boolean
+  name: string
+  description: string | null
+  durationInMinutes: number
+  clerkUserId: string
+}
+
 function EventCard({
   id,
   isActive,
   name,
   description,
   durationInMinutes,
-  ClerkUserId
+  clerkUserId
 })
