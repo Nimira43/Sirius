@@ -19,7 +19,7 @@ export default async function EventsPage() {
 
   return (
     <>
-      <div className='flex gap-4 items-center'>
+      <div className='flex gap-4 items-center mb-6'>
         <h1 className='text-3xl lg:text-4xl xl:text-5xl font-medium'>Events</h1>
         <Button asChild>
           <Link 
@@ -30,10 +30,13 @@ export default async function EventsPage() {
             New Event
           </Link>
         </Button>
+
       </div>
       {events.length > 0 ? 
         (
-          <div className='grid gap-4 grid-cols[repeat(auto-fill, minmax(400px, 1fr))]'>
+          // <div className='grid gap-4 grid-cols[repeat(auto-fill, minmax(400px, 1fr))]'>
+          <div className='grid gap-4 [grid-template-columns:repeat(auto-fill,minmax(400px,1fr))]'>
+
             {events.map(event => (
               <EventCard 
                 key={event.id} 
