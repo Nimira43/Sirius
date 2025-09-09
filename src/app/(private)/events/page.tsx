@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button'
+import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { db } from '@/drizzle/db'
 import { auth } from '@clerk/nextjs/server'
 import Link from 'next/link'
@@ -78,4 +79,15 @@ function EventCard({
   description,
   durationInMinutes,
   clerkUserId
-}: EventCardProps) {}
+}: EventCardProps) {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>{name}</CardTitle>
+        <CardDescription>
+          {formatEventDescription(durationInMinutes)}
+        </CardDescription>
+      </CardHeader>
+    </Card>
+  )
+}
