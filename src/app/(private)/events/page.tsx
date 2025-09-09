@@ -1,3 +1,4 @@
+import { CopyEventButton } from '@/components/forms/CopyEventButton'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { db } from '@/drizzle/db'
@@ -93,7 +94,7 @@ function EventCard({
         <CardContent>{description}</CardContent>
       )}
       <CardFooter className='flex justify-end gap-2 mt-auto'>
-        <CopyEventButton 
+        <CopyEventButton
           variant='outline'
           eventId={id}
           clerkUserId={clerkUserId}

@@ -14,11 +14,18 @@ export function CopyEventButton({
   eventId: string
   clerkUserId: string
 }) {
-  const [copyState, setCopyState] = useState<CopyState>
+  const [copyState, setCopyState] = useState<CopyState>('idle')
   const CopyIcon = getCopyIcon(copyState)
 
   return (
-    <Button {...buttonProps}>
+    <Button 
+      {...buttonProps}
+      onClick={() => {
+        navigator.clipboard.writeText(`
+          ${location.origin}/book/${clerkUserId}/${eventId}
+        `)
+      }}
+    >
       <CopyIcon className='size-4 mr-2' />
       {getChildren(copyState)}
     </Button>
