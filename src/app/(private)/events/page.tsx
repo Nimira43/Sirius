@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { db } from '@/drizzle/db'
 import { formatEventDescription } from '@/lib/formatters'
 import { auth } from '@clerk/nextjs/server'
@@ -82,16 +82,26 @@ function EventCard({
   clerkUserId
 }: EventCardProps) {
   return (
-    <Card>
+    <Card className='flex flex-col'>
       <CardHeader>
         <CardTitle>{name}</CardTitle>
         <CardDescription>
           {formatEventDescription(durationInMinutes)}
         </CardDescription>
       </CardHeader>
-      {description != null &&  (
+      {description != null && (
         <CardContent>{description}</CardContent>
       )}
+      <CardFooter className='flex justify-end gap-2 mt-auto'>
+        <CopyEventButton 
+          variant='outline'
+          eventId={id}
+          clerkUserId={clerkUserId}
+        />
+        <Button asChild>
+          <Link href={`/events/${id}/edit`}>Edit</Link>
+        </Button>  
+      </CardFooter>   
     </Card>
   )
 }
