@@ -29,6 +29,10 @@ export function CopyEventButton({
             setCopyState('copied')
             setTimeout(() => setCopyState('idle'), 2000)
           })
+          .catch(() => {
+            setCopyState('error')
+            setTimeout(() => setCopyState('idle'), 2000)
+          })
       }}
     >
       <CopyIcon className='size-4 mr-2' />
