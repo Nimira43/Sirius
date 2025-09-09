@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { db } from '@/drizzle/db'
+import { formatEventDescription } from '@/lib/formatters'
 import { auth } from '@clerk/nextjs/server'
 import Link from 'next/link'
 import { BsCalendarCheck, BsCalendar3 } from 'react-icons/bs'
