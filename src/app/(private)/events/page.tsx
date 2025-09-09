@@ -28,9 +28,17 @@ export default async function EventsPage() {
           </Link>
         </Button>
       </div>
-      {events.length > 0 
-        ? (<h1>Events</h1>) 
-        : (
+      {events.length > 0 ? 
+        (
+          <div className='grid gap-4 grid-cols[repeat(auto-fill, minmax(400px, 1fr))]'>
+            {events.map(event => (
+              <EventCard 
+                key={event.id} 
+                {...event}
+              />
+            ))}
+          </div>
+        ) : (
           <div className='flex flex-col items-center gap-4 mt-6'>
             <BsCalendar3 className='size-16 mx-auto' />
             <span>There are currently no events to show. Create your first event to get started.</span>
