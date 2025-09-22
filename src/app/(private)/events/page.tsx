@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { db } from '@/drizzle/db'
 import { formatEventDescription } from '@/lib/formatters'
+import { cn } from '@/lib/utils'
 import { auth } from '@clerk/nextjs/server'
 import Link from 'next/link'
 import { BsCalendarCheck, BsCalendar3 } from 'react-icons/bs'
@@ -86,7 +87,11 @@ function EventCard({
   clerkUserId
 }: EventCardProps) {
   return (
-    <Card className='flex flex-col'>
+    <Card 
+      className={cn(
+        'flex flex-col', !isActive && 'border-main-light'
+      )}
+    >
       <CardHeader>
         <CardTitle>{name}</CardTitle>
         <CardDescription>
