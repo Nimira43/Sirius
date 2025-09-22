@@ -92,14 +92,24 @@ function EventCard({
         'flex flex-col', !isActive && 'border-main-light'
       )}
     >
-      <CardHeader>
+      <CardHeader
+        className={cn(
+          !isActive && 'opacity-50'
+        )}
+      >
         <CardTitle>{name}</CardTitle>
         <CardDescription>
           {formatEventDescription(durationInMinutes)}
         </CardDescription>
       </CardHeader>
       {description != null && (
-        <CardContent>{description}</CardContent>
+        <CardContent
+          className={cn(
+            !isActive && 'opacity-50'
+          )}
+        >
+          {description}
+        </CardContent>
       )}
       <CardFooter className='flex justify-end gap-2 mt-auto'>
         {isActive && (
