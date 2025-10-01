@@ -140,6 +140,8 @@ export function EventForm({
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <Button
+                  variant='outline'
+                  className='uppercase'
                   disabled={isDeletePending || form.formState.isSubmitting}
                 >
                   Delete
