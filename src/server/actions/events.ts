@@ -35,13 +35,17 @@ export async function updateEvent(
     return { error: true}
   }
 
-  await db
+  const { rowCount } = await db
     .update(EventTable)
     .set({...data})
     .where(
       and(
         eq(EventTable.id, id), 
         eq(EventTable.clerkUserId, userId)))
+
+  if (rowCount === 0) {
+    return { error: true}
+  }
 
   redirect('/events')
 }
