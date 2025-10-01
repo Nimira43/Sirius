@@ -11,6 +11,7 @@ import Link from 'next/link'
 import { Textarea } from '../ui/textarea'
 import { Switch } from '../ui/switch'
 import { createEvent, updateEvent } from '@/server/actions/events'
+import { AlertDialog, AlertDialogTrigger } from '../ui/alert-dialog'
 
 export function EventForm({
   event
@@ -134,9 +135,17 @@ export function EventForm({
           )}
         />
         <div className='flex gap-2 justify-end'>
-          {/* {event && (
-            <AlertDialog
-          )} */}
+          {event && (
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button
+                  disabled={form.formState.isSubmitting}
+                >
+                  Delete
+                </Button>
+              </AlertDialogTrigger>
+            </AlertDialog>
+          )}
           <Button 
             type='button'
             asChild 
