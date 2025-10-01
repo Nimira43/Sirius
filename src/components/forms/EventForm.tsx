@@ -12,6 +12,7 @@ import { Textarea } from '../ui/textarea'
 import { Switch } from '../ui/switch'
 import { createEvent, updateEvent } from '@/server/actions/events'
 import { AlertDialog, AlertDialogTrigger } from '../ui/alert-dialog'
+import { useState } from 'react'
 
 export function EventForm({
   event
@@ -24,11 +25,11 @@ export function EventForm({
     isActive: boolean
   }
 }) {
+  const [isDeletePending, setIsDeletePending] = useState()
+
   const form = useForm<z.infer<typeof eventFormSchema>>({
     resolver: zodResolver(eventFormSchema),
-    defaultValues: event ?? {
-      // name: '',  
-      // description: '',      
+    defaultValues: event ?? {   
       isActive: true,
       durationInMinutes: 30   
     }
@@ -139,7 +140,7 @@ export function EventForm({
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <Button
-                  disabled={form.formState.isSubmitting}
+                  disabled={isDeletePending || form.formState.isSubmitting}
                 >
                   Delete
                 </Button>
