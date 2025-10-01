@@ -52,18 +52,15 @@ export async function updateEvent(
 
 export async function deleteEvent(
   id: string,
-  unsafeData: z.infer<typeof eventFormSchema>
 ): Promise<{ error: boolean | undefined }> {
   const { userId } = auth()  
-  const { success, data} = eventFormSchema.safeParse(unsafeData)
-
-  if (!success || userId == null) {
+  
+  if (userId == null) {
     return { error: true}
   }
 
   const { rowCount } = await db
-    .update(EventTable)
-    .set({...data})
+    .delete(EventTable)
     .where(
       and(
         eq(EventTable.id, id), 
