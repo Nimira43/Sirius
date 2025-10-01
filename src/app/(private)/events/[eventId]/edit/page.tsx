@@ -15,7 +15,9 @@ export default async function EditEventPage({
 
   const event = await db.query.EventTable.findFirst({
     where: ({ id, clerkUserId }, { and, eq }) => 
-      and(eq(clerkUserId, userId), eq(id, eventId)),
+      and(
+        eq(clerkUserId, userId), 
+        eq(id, eventId)),
   })
 
   if (event == null) return notFound()
