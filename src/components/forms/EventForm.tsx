@@ -11,7 +11,7 @@ import Link from 'next/link'
 import { Textarea } from '../ui/textarea'
 import { Switch } from '../ui/switch'
 import { createEvent, updateEvent } from '@/server/actions/events'
-import { AlertDialog, AlertDialogTrigger } from '../ui/alert-dialog'
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '../ui/alert-dialog'
 import { useState } from 'react'
 
 export function EventForm({
@@ -147,6 +147,24 @@ export function EventForm({
                   Delete
                 </Button>
               </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>
+                    Are you sure?
+                  </AlertDialogTitle>
+                  <AlertDialogDescription>
+                    You are about to delete this event. This action cannot be undone.
+                  </AlertDialogDescription>  
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction
+                    disabled={isDeletePending || form.formState.isSubmitting}
+                  >
+                    Confirm
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
             </AlertDialog>
           )}
           <Button 
