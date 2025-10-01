@@ -3,9 +3,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { db } from '@/drizzle/db'
 import { auth } from '@clerk/nextjs/server'
 
-export default function EditEventPage({params: {
-  eventId
-}}: {
+export default async function EditEventPage({
+  params: { eventId }
+}: {
   params: { eventId: string}
 }) {
   const { userId, redirectToSignIn } = auth()
@@ -23,7 +23,7 @@ export default function EditEventPage({params: {
         <CardTitle>Edit Event</CardTitle>
       </CardHeader>
       <CardContent>
-        <EventForm />
+        <EventForm event={event} />
       </CardContent>     
     </Card>
   )
