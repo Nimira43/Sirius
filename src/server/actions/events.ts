@@ -22,3 +22,18 @@ export async function createEvent(
 
   redirect('/events')
 }
+
+export async function updateEvent(
+  unsafeData: z.infer<typeof eventFormSchema>
+): Promise<{ error: boolean | undefined }> {
+  const { userId } = auth()  
+  const { success, data} = eventFormSchema.safeParse(unsafeData)
+
+  if (!success || userId == null) {
+    return { error: true}
+  }
+
+  await db.insert(EventTable).values({...data, clerkUserId: userId})
+
+  redirect('/events')
+}

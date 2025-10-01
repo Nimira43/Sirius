@@ -10,7 +10,7 @@ import { Button } from '../ui/button'
 import Link from 'next/link'
 import { Textarea } from '../ui/textarea'
 import { Switch } from '../ui/switch'
-import { createEvent } from '@/server/actions/events'
+import { createEvent, updateEvent } from '@/server/actions/events'
 
 export function EventForm({
   event
