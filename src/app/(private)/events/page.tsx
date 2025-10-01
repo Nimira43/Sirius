@@ -8,6 +8,8 @@ import { auth } from '@clerk/nextjs/server'
 import Link from 'next/link'
 import { BsCalendarCheck, BsCalendar3 } from 'react-icons/bs'
 
+export const revalidate = 0
+
 export default async function EventsPage() {
   const { userId, redirectToSignIn } = auth()
 
