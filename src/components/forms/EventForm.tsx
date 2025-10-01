@@ -160,6 +160,11 @@ export function EventForm({
                   <AlertDialogCancel>Cancel</AlertDialogCancel>
                   <AlertDialogAction
                     disabled={isDeletePending || form.formState.isSubmitting}
+                    onClick={() => {
+                      startDeleteTransition(async() => {
+                        const data = await deleteEvent(event.id)
+                      })
+                    }}
                   >
                     Confirm
                   </AlertDialogAction>
