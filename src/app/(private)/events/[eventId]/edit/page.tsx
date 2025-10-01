@@ -5,6 +5,8 @@ import { auth } from '@clerk/nextjs/server'
 export default function EditEventPage() {
   const { userId, redirectToSignIn } = auth()
 
+  if (userId == null) redirectToSignIn()
+
   return (
     <Card className='max-w-md mx-auto'>
       <CardHeader>
