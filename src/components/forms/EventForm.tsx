@@ -36,8 +36,9 @@ export function EventForm({
   async function onSubmit(values: z.infer<typeof eventFormSchema>) {
     const action = event == null 
       ? createEvent 
-      : updateEvent
-    const data = await createEvent(values)
+      : updateEvent.bind(null, event.id)
+    
+    const data = await action(values)
 
     if (data?.error) {
       form.setError('root', {
