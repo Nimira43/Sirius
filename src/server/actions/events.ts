@@ -43,9 +43,5 @@ export async function updateEvent(
         eq(EventTable.id, id), 
         eq(EventTable.clerkUserId, userId)))
 
-  await db
-    .insert(EventTable)
-    .values({...data, clerkUserId: userId})
-
   redirect('/events')
 }
