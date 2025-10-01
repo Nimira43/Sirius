@@ -12,7 +12,7 @@ import { Textarea } from '../ui/textarea'
 import { Switch } from '../ui/switch'
 import { createEvent, updateEvent } from '@/server/actions/events'
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '../ui/alert-dialog'
-import { useState } from 'react'
+import { useTransition } from 'react'
 
 export function EventForm({
   event
@@ -25,7 +25,7 @@ export function EventForm({
     isActive: boolean
   }
 }) {
-  const [isDeletePending, setIsDeletePending] = useState()
+  const [isDeletePending, startDeleteTransition] = useTransition()
 
   const form = useForm<z.infer<typeof eventFormSchema>>({
     resolver: zodResolver(eventFormSchema),
