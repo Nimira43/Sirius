@@ -157,9 +157,14 @@ export function EventForm({
                   </AlertDialogDescription>  
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogCancel
+                    className='uppercase'
+                  >
+                    Cancel
+                    </AlertDialogCancel>
                   <AlertDialogAction
                     disabled={isDeletePending || form.formState.isSubmitting}
+                    className='bg-main text-light uppercase'
                     onClick={() => {
                       startDeleteTransition(async() => {
                         const data = await deleteEvent(event.id)
