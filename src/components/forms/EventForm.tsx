@@ -163,6 +163,12 @@ export function EventForm({
                     onClick={() => {
                       startDeleteTransition(async() => {
                         const data = await deleteEvent(event.id)
+
+                        if (data?.error) {
+                          form.setError('root', {
+                            message: 'There was an error deleting your event.',
+                          })
+                        }
                       })
                     }}
                   >
