@@ -134,6 +134,9 @@ export function EventForm({
           )}
         />
         <div className='flex gap-2 justify-end'>
+          {/* {event && (
+            <AlertDialog
+          )} */}
           <Button 
             type='button'
             asChild 
