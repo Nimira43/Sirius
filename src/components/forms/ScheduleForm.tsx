@@ -116,22 +116,28 @@ export function ScheduleForm({
           )}
         />
         <div className='grid grid-cols-[auto,1fr] gap-y-6 gap-x-4'>
-          {DAYS_OF_WEEK_IN_ORDER.map(dayofWeek => (
-            <Fragment key={dayofWeek}>
+          {DAYS_OF_WEEK_IN_ORDER.map(dayOfWeek => (
+            <Fragment key={dayOfWeek}>
               <div className='capitalize text-sm font-medium'>
-                {dayofWeek.substring(0, 3)}
+                {dayOfWeek.substring(0, 3)}
               </div>
               <div className='flex flex-col gap-2'>
                 <Button
                   type='button'
-                  onClick={() => {}}
+                  onClick={() => {
+                    addAvailabilty({
+                      dayOfWeek,
+                      startTime: '9:00',
+                      endTime: '17:00'
+                    })
+                  }}
                   className='size-6 p-1'
                   variant='outline'
                 >
                   <HiOutlinePlusSmall className='size-full' />
                 </Button>
                 
-                {groupedAvailabiltyFields[dayofWeek]?.map((field, labelIndex) => (
+                {groupedAvailabiltyFields[dayOfWeek]?.map((field, labelIndex) => (
                   <div 
                     className='flex flex-col gap-1'
                     key={field.id}
@@ -147,7 +153,7 @@ export function ScheduleForm({
                               <Input 
                                 className='w-24'
                                 aria-label={
-                                  `${dayofWeek} Start Time ${labelIndex + 1}`
+                                  `${dayOfWeek} Start Time ${labelIndex + 1}`
                                 }
                                 {...field}
                               />
@@ -166,7 +172,7 @@ export function ScheduleForm({
                               <Input 
                                 className='w-24'
                                 aria-label={
-                                  `${dayofWeek} End Time ${labelIndex + 1}`
+                                  `${dayOfWeek} End Time ${labelIndex + 1}`
                                 }
                                 {...field}
                               />
