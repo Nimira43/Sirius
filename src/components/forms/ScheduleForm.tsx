@@ -185,6 +185,22 @@ export function ScheduleForm({
                         )?.root?.message
                       }
                     </FormMessage>
+                    <FormMessage>
+                      {
+                        form.formState.errors.availabilities?.
+                        at?.(
+                          field.index
+                        )?.startTime?.message
+                      }
+                    </FormMessage>
+                    <FormMessage>
+                      {
+                        form.formState.errors.availabilities?.
+                        at?.(
+                          field.index
+                        )?.endTime?.message
+                      }
+                    </FormMessage>
                   </div>
                 ))}
 
