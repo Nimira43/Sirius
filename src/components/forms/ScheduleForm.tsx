@@ -5,7 +5,6 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod' 
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '../ui/form'
 import { Button } from '../ui/button'
-import Link from 'next/link'
 import { createEvent, updateEvent } from '@/server/actions/events'
 import { DAYS_OF_WEEK_IN_ORDER } from '@/data/constants'
 import { scheduleFormSchema } from '@/schema/schedule'
@@ -87,14 +86,11 @@ export function ScheduleForm({
                       value={timezone}
                     >
                       {timezone}
-                      {`(${formatTimezoneOffset(timezone)})`}
+                      {` (${formatTimezoneOffset(timezone)})`}
                     </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
-              <FormDescription>
-                Name users see when booking.
-              </FormDescription>
               <FormMessage />
             </FormItem>
           )}
