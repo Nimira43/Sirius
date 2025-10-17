@@ -20,8 +20,10 @@ export const scheduleFormSchema = z.object({
     ).superRefine((availabilities, ctx) => {
       availabilities.forEach((availibility, index) => {
         const overlaps = availabilities.some((a, i) => {
-          
+          return i !== index && a.dayOfWeek === availibility.dayOfWeek && 
         })
       })
     }),
 })
+
+
