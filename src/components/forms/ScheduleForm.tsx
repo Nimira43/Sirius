@@ -50,6 +50,14 @@ export function ScheduleForm({
     control: form.control
   })
 
+  const groupedAvailabiltyFields = Object.groupBy(
+    availabilityFields.map((field, index) => ({
+      ...field,
+      index
+    })),
+    availability => availability.dayOfWeek
+  )
+
   async function onSubmit(values: z.infer<typeof scheduleFormSchema>) {
     const action = event == null 
       ? createEvent 
