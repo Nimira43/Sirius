@@ -51,4 +51,6 @@ export async function saveSchedule(
       )
     )
   }
+
+  await db.batch(statements)
 }
