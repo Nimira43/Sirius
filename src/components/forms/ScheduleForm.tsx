@@ -130,46 +130,64 @@ export function ScheduleForm({
                 >
                   <HiOutlinePlusSmall className='size-full' />
                 </Button>
+                
                 {groupedAvailabiltyFields[dayofWeek]?.map((field, labelIndex) => (
-                  <div className='flex gap-2 item-center'>
-                    <FormField
-                      control={form.control}
-                      name={`availabilities.${field.index}.startTime`}
-                      render={({field}) => (
-                        <FormItem>
-                          <FormControl>
-                            <Input 
-                              className='w-24'
-                              aria-label={
-                                `${dayofWeek} Start Time ${labelIndex + 1}`
-                              }
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name={`availabilities.${field.index}.endTime`}
-                      render={({field}) => (
-                        <FormItem>
-                          <FormControl>
-                            <Input 
-                              className='w-24'
-                              aria-label={
-                                `${dayofWeek} Start Time ${labelIndex + 1}`
-                              }
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                  <div 
+                    className='flex flex-col gap-1'
+                    key={field.id}
+                  >
+                    <div className='flex gap-2 item-center'>
+                      
+                      <FormField
+                        control={form.control}
+                        name={`availabilities.${field.index}.startTime`}
+                        render={({field}) => (
+                          <FormItem>
+                            <FormControl>
+                              <Input 
+                                className='w-24'
+                                aria-label={
+                                  `${dayofWeek} Start Time ${labelIndex + 1}`
+                                }
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name={`availabilities.${field.index}.endTime`}
+                        render={({field}) => (
+                          <FormItem>
+                            <FormControl>
+                              <Input 
+                                className='w-24'
+                                aria-label={
+                                  `${dayofWeek} End Time ${labelIndex + 1}`
+                                }
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                
+                    </div>
+                    <FormMessage>
+                      {
+                        form.formState.errors.availabilities?.
+                        at?.(
+                          field.index
+                        )?.root?.message
+                      }
+                    </FormMessage>
                   </div>
                 ))}
+
               </div>
             </Fragment> 
           ))}
