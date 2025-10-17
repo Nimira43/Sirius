@@ -87,7 +87,11 @@ export function ScheduleForm({
                   {Intl.supportedValuesOf('timeZone').map(timezone => (
                     <SelectItem
                       key={timezone}
-                    ></SelectItem>
+                      value={timezone}
+                    >
+                      {timezone}
+                      {`(${formatTimezoneOffset(timezone)})`}
+                    </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
