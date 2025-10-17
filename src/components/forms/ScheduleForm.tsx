@@ -13,6 +13,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { formatTimezoneOffset } from '@/lib/formatters'
 import { Fragment } from 'react'
 import { HiOutlinePlusSmall } from 'react-icons/hi2'
+import { Input } from '../ui/input'
 
 type Availability = {
   startTime: string
@@ -131,32 +132,16 @@ export function ScheduleForm({
                 </Button>
                 {groupedAvailabiltyFields[dayofWeek]?.map((field, labelIndex) => (
                   <FormField
+                    key={form.index}
                     control={form.control}
-                    name='timezone'
+                    name={`availabilities.${field.index.startTime}`}
                     render={({field}) => (
                       <FormItem>
-                        <FormLabel>Timezone</FormLabel>
-                        <Select 
-                          onValueChange={field.onChange}
-                          defaultValue={field.value}
-                        >
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue />
-                            </SelectTrigger>               
-                          </FormControl>
-                          <SelectContent>
-                            {Intl.supportedValuesOf('timeZone').map(timezone => (
-                              <SelectItem
-                                key={timezone}
-                                value={timezone}
-                              >
-                                {timezone}
-                                {` (${formatTimezoneOffset(timezone)})`}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
+                        <Input 
+                          className='w-24'
+                          aria-label={`${dayofWeek} Start Time ${labelIndex + 1}`}
+                          {...field}
+                        />
                         <FormMessage />
                       </FormItem>
                     )}
