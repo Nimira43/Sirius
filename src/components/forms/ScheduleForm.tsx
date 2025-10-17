@@ -14,7 +14,7 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { DAYS_OF_WEEK_IN_ORDER } from '@/data/constants'
 import { scheduleFormSchema } from '@/schema/schedule'
 import { timeToInt } from '@/lib/utils'
-import { Select } from '../ui/select'
+import { Select, SelectTrigger, SelectValue } from '../ui/select'
 
 type Availability = {
   startTime: string
@@ -74,9 +74,13 @@ export function ScheduleForm({
           render={({field}) => (
             <FormItem>
               <FormLabel>Timezone</FormLabel>
-              <FormControl>
-                <Select {...field} />
-              </FormControl>
+              <Select>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>               
+                </FormControl>
+              </Select>
               <FormDescription>
                 Name users see when booking.
               </FormDescription>
