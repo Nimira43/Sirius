@@ -129,9 +129,41 @@ export function ScheduleForm({
                 >
                   <HiOutlinePlusSmall className='size-full' />
                 </Button>
+                {groupedAvailabiltyFields[dayofWeek]?.map((field, labelIndex) => (
+                  <FormField
+                    control={form.control}
+                    name='timezone'
+                    render={({field}) => (
+                      <FormItem>
+                        <FormLabel>Timezone</FormLabel>
+                        <Select 
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue />
+                            </SelectTrigger>               
+                          </FormControl>
+                          <SelectContent>
+                            {Intl.supportedValuesOf('timeZone').map(timezone => (
+                              <SelectItem
+                                key={timezone}
+                                value={timezone}
+                              >
+                                {timezone}
+                                {` (${formatTimezoneOffset(timezone)})`}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                ))}
               </div>
-            </Fragment>
-            
+            </Fragment> 
           ))}
         </div>
 
