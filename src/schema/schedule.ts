@@ -28,6 +28,22 @@ export const scheduleFormSchema = z.object({
             timeToInt(a.endTime) > timeToInt(availability.startTime)
           )
         })
+
+        if (overlaps) {
+          ctx.addIssue({
+            code: 'custom',
+            message: 'Availability overlaps with another.',
+            path: [index]
+          })
+        }
+
+        if (timeToInt(availability.startTime) >= timeToInt(availability.endTime)) {
+          ctx.addIssue({
+            code: 'custom',
+            message: 'End time must be after start time.',
+            path: [index]
+          })
+        }
       })
     }),
 })
