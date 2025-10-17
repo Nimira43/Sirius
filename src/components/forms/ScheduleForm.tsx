@@ -14,7 +14,7 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { DAYS_OF_WEEK_IN_ORDER } from '@/data/constants'
 import { scheduleFormSchema } from '@/schema/schedule'
 import { timeToInt } from '@/lib/utils'
-import { Select, SelectTrigger, SelectValue } from '../ui/select'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
 
 type Availability = {
   startTime: string
@@ -74,12 +74,22 @@ export function ScheduleForm({
           render={({field}) => (
             <FormItem>
               <FormLabel>Timezone</FormLabel>
-              <Select>
+              <Select 
+                onValueChange={field.onChange}
+                defaultValue={field.value}
+              >
                 <FormControl>
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>               
                 </FormControl>
+                <SelectContent>
+                  {Intl.supportedValuesOf('timeZone').map(timezone => (
+                    <SelectItem
+                      key={timezone}
+                    ></SelectItem>
+                  ))}
+                </SelectContent>
               </Select>
               <FormDescription>
                 Name users see when booking.
