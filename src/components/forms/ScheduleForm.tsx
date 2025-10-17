@@ -15,6 +15,7 @@ import { DAYS_OF_WEEK_IN_ORDER } from '@/data/constants'
 import { scheduleFormSchema } from '@/schema/schedule'
 import { timeToInt } from '@/lib/utils'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
+import { formatTimezoneOffset } from '@/lib/formatters'
 
 type Availability = {
   startTime: string
