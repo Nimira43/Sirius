@@ -7,6 +7,9 @@ export function formatEventDescription(durationInMinutes: number) {
   if (hours === 0) return minutesString
   if (minutes === 0) return hoursString
 
-  return `${hoursString} ${minutesString}`
-  
+  return `${hoursString} ${minutesString}` 
+}
+
+export function formatTimezoneOffset(timezone: string) {
+
 }
