@@ -11,5 +11,8 @@ export function formatEventDescription(durationInMinutes: number) {
 }
 
 export function formatTimezoneOffset(timezone: string) {
-
+  return new Intl.DateTimeFormat(undefined, {
+    timeZone: timezone,
+    timeZoneName: 'shortOffset'
+  })
 }
