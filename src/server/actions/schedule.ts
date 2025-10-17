@@ -19,11 +19,17 @@ export async function saveSchedule(
 
   const { availabilities, ...scheduleData } = data
 
-  await db.insert(ScheduleTable).values({
-    ...scheduleData,
-    clerkUserId: userId
-  }).onConflictDoUpdate({
-    target: ScheduleTable.clerkUserId,
-    set: scheduleData,
-  })
+  const [{ id: scheduleId }] = await db
+    .insert(ScheduleTable)
+    .values({
+      ...scheduleData,
+      clerkUserId: userId
+    })
+    .onConflictDoUpdate({
+      target: ScheduleTable.clerkUserId,
+      set: scheduleData,
+    })
+    .returning({
+      id: ScheduleTable.id
+    })
 }
