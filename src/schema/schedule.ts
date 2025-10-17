@@ -17,5 +17,11 @@ export const scheduleFormSchema = z.object({
           .string()
           .regex(/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/, 'Time must be in the format HH:MM'),
       })
-    )
+    ).superRefine((availabilities, ctx) => {
+      availabilities.forEach((availibility, index) => {
+        const overlaps = availabilities.some((a, i) => {
+          
+        })
+      })
+    }),
 })
