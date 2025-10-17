@@ -4,6 +4,7 @@ import { auth } from '@clerk/nextjs/server'
 export default function SchedulePage() {
   const { userId, redirectToSignIn } = auth()
   
+  if (!userId == null) return redirectToSignIn
   
   return (
     <Card className='max-w-md mx-auto'>
