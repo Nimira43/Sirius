@@ -3,7 +3,6 @@
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod' 
-import { eventFormSchema } from '@/schema/events'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '../ui/form'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
@@ -12,8 +11,8 @@ import { Textarea } from '../ui/textarea'
 import { Switch } from '../ui/switch'
 import { createEvent, deleteEvent, updateEvent } from '@/server/actions/events'
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '../ui/alert-dialog'
-import { useTransition } from 'react'
 import { DAYS_OF_WEEK_IN_ORDER } from '@/data/constants'
+import { scheduleFormSchema } from '@/schema/schedule'
 
 type Availability = {
   startTime: string
@@ -30,14 +29,14 @@ export function ScheduleForm({
   }
 }) {
   const form = useForm<z.infer<typeof scheduleFormSchema>>({
-    resolver: zodResolver(eventFormSchema),
+    resolver: zodResolver(scheduleFormSchema),
     defaultValues: event ?? {   
       isActive: true,
       durationInMinutes: 30   
     }
   })
 
-  async function onSubmit(values: z.infer<typeof eventFormSchema>) {
+  async function onSubmit(values: z.infer<typeof scheduleFormSchema>) {
     const action = event == null 
       ? createEvent 
       : updateEvent.bind(null, event.id)
