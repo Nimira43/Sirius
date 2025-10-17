@@ -84,6 +84,11 @@ export function ScheduleForm({
             {form.formState.errors.root.message}
           </div>
         )}
+        {successMessage && (
+          <div className='text-green-500 text-sm'>
+            {successMessage}
+          </div>
+        )}
         <FormField
           control={form.control}
           name='timezone'
@@ -162,7 +167,7 @@ export function ScheduleForm({
                           </FormItem>
                         )}
                       />
-
+                      -
                       <FormField
                         control={form.control}
                         name={`availabilities.${field.index}.endTime`}
