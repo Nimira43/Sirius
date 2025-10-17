@@ -10,9 +10,7 @@ export default async function SchedulePage() {
   
   const schedule = await db.query.ScheduleTable.findFirst({
     where: (({ clerkUserId }, { eq }) => eq(clerkUserId, userId)),
-    with: {
-      availabilities: true
-    }
+    with: { availabilities: true }
   })
 
   return (
