@@ -60,15 +60,11 @@ export function ScheduleForm({
   )
 
   async function onSubmit(values: z.infer<typeof scheduleFormSchema>) {
-    const action = event == null 
-      ? createEvent 
-      : updateEvent.bind(null, event.id)
-    
-    const data = await action(values)
+    const data = await saveSchedule(values)
 
     if (data?.error) {
       form.setError('root', {
-        message: 'There was an error saving your event.'
+        message: 'There was an error saving your schedule.'
       })
     }
   }
