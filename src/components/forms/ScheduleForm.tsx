@@ -147,7 +147,7 @@ export function ScheduleForm({
                     className='flex flex-col gap-1'
                     key={field.id}
                   >
-                    <div className='flex gap-2 item-center'>
+                    <div className='flex gap-2 items-center'>
                       
                       <FormField
                         control={form.control}
