@@ -15,4 +15,6 @@ export function formatTimezoneOffset(timezone: string) {
     timeZone: timezone,
     timeZoneName: 'shortOffset'
   })
+    .formatToParts(new Date())
+    .find(part => part.type == 'timeZoneName')?.value
 }
