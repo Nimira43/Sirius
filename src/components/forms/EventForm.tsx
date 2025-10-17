@@ -184,6 +184,7 @@ export function EventForm({
             </AlertDialog>
           )}
           <Button 
+            disabled={isDeletePending || form.formState.isSubmitting}
             type='button'
             asChild 
             variant='outline'
@@ -196,6 +197,7 @@ export function EventForm({
             </Link>
           </Button>
           <Button 
+            disabled={isDeletePending || form.formState.isSubmitting}
             type='submit'
             className='uppercase'
           >
