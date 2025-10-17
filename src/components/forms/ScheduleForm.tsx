@@ -101,8 +101,16 @@ export function ScheduleForm({
             <Fragment
               key={dayofWeek}
             >
-              <div>{dayofWeek}</div>
-              <div>Content</div>
+              <div
+                className='capitalize text-sm font-medium'
+              >
+                {dayofWeek.substring(0, 3)}
+              </div>
+              <div
+                
+              >
+                Content
+              </div>
             </Fragment>
             
           ))}
