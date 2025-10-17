@@ -1,5 +1,6 @@
 import { DAYS_OF_WEEK_IN_ORDER } from '@/data/constants'
 import { z } from 'zod'
+import { timeToInt } from '@/lib/utils'
 
 export const scheduleFormSchema = z.object({
   timezone: z
@@ -48,6 +49,4 @@ export const scheduleFormSchema = z.object({
     }),
 })
 
-function timeToInt(time: string) {
-  return parseFloat(time.replace(':', '.'))
-}
+
