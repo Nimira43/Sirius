@@ -3,7 +3,7 @@
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod' 
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '../ui/form'
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form'
 import { Button } from '../ui/button'
 import { createEvent, updateEvent } from '@/server/actions/events'
 import { DAYS_OF_WEEK_IN_ORDER } from '@/data/constants'
@@ -12,6 +12,7 @@ import { timeToInt } from '@/lib/utils'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
 import { formatTimezoneOffset } from '@/lib/formatters'
 import { Fragment } from 'react'
+import { HiOutlinePlusSmall } from 'react-icons/hi2'
 
 type Availability = {
   startTime: string
@@ -98,18 +99,19 @@ export function ScheduleForm({
         />
         <div className='grid grid-cols-[auto,1fr] gap-y-6 gap-x-4'>
           {DAYS_OF_WEEK_IN_ORDER.map(dayofWeek => (
-            <Fragment
-              key={dayofWeek}
-            >
-              <div
-                className='capitalize text-sm font-medium'
-              >
+            <Fragment key={dayofWeek}>
+              <div className='capitalize text-sm font-medium'>
                 {dayofWeek.substring(0, 3)}
               </div>
-              <div
-                
-              >
-                Content
+              <div className='flex flex-col gap-2'>
+                <Button
+                  type='button'
+                  onClick={() => {}}
+                  className='size-6 p-1'
+                  variant='outline'
+                >
+                  <HiOutlinePlusSmall className='size-full' />
+                </Button>
               </div>
             </Fragment>
             
