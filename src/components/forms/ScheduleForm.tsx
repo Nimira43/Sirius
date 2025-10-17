@@ -15,9 +15,11 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { useTransition } from 'react'
 
 export function ScheduleForm({
-  event
+  schedule,
 } : {
-  event?: {
+  schedule?: {
+    timezone: string
+    availabilities: Availability[]
     id: string
     name: string
     description?: string
