@@ -12,7 +12,10 @@ export const scheduleFormSchema = z.object({
           enum(DAYS_OF_WEEK_IN_ORDER),
         startTime: z
           .string()
-          .regex(/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/),
+          .regex(/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/, 'Time must be in the format HH:MM'),
+        endTime: z
+          .string()
+          .regex(/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/, 'Time must be in the format HH:MM'),
       })
     )
 })
