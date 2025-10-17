@@ -11,6 +11,7 @@ import { scheduleFormSchema } from '@/schema/schedule'
 import { timeToInt } from '@/lib/utils'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
 import { formatTimezoneOffset } from '@/lib/formatters'
+import { Fragment } from 'react'
 
 type Availability = {
   startTime: string
@@ -95,6 +96,19 @@ export function ScheduleForm({
             </FormItem>
           )}
         />
+        <div className='grid grid-cols-[auto,1fr] gap-y-6 gap-x-4'>
+          {DAYS_OF_WEEK_IN_ORDER.map(dayofWeek => (
+            <Fragment
+              key={dayofWeek}
+            >
+              <div>{dayofWeek}</div>
+              <div>Content</div>
+            </Fragment>
+            
+          ))}
+        </div>
+
+
         <div className='flex gap-2 justify-end'>
           <Button 
             disabled={form.formState.isSubmitting}
