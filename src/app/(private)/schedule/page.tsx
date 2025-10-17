@@ -5,7 +5,7 @@ import { auth } from '@clerk/nextjs/server'
 export default async function SchedulePage() {
   const { userId, redirectToSignIn } = auth()
   
-  if (!userId == null) return redirectToSignIn()
+  if (userId == null) return redirectToSignIn()
   
   const schedule = await db.query.ScheduleTable.findFirst({
     where: (({ clerkUserId }, { eq }) => eq(clerkUserId, userId)),
@@ -22,7 +22,7 @@ export default async function SchedulePage() {
         <CardTitle>Schedule</CardTitle>
       </CardHeader>
       <CardContent>
-        <h1>Under Construction</h1>
+        <ScheduleForm schedule={schedule}>
       </CardContent>     
     </Card>
   )
