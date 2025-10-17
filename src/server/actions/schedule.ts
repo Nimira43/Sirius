@@ -5,7 +5,9 @@ import { scheduleFormSchema } from '@/schema/schedule'
 import { z } from 'zod'
 import { auth } from '@clerk/nextjs/server'
 import { db } from '@/drizzle/db'
-import { ScheduleTable } from '@/drizzle/schema'
+import { ScheduleAvailabilityTable, ScheduleTable } from '@/drizzle/schema'
+import { BatchItem } from 'drizzle-orm/batch'
+import { eq } from 'drizzle-orm'
 
 export async function saveSchedule(
   unsafeData: z.infer<typeof scheduleFormSchema>
@@ -32,4 +34,12 @@ export async function saveSchedule(
     .returning({
       id: ScheduleTable.id
     })
+  
+  const statements: [BatchItem<'pg'>] = [
+    db
+      .delete(ScheduleAvailabilityTable)
+      .where(eq(ScheduleAvailabilityTable.scheduleId, scheduleId)),    
+  ]
+
+  
 }
