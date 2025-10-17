@@ -41,5 +41,14 @@ export async function saveSchedule(
       .where(eq(ScheduleAvailabilityTable.scheduleId, scheduleId)),    
   ]
 
-  
+  if (availabilities.length > 0) {
+    statements.push(
+      db.insert(ScheduleAvailabilityTable).values(
+        availabilities.map(availability => ({
+          ...availability, 
+          scheduleId
+        }))
+      )
+    )
+  }
 }
