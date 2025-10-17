@@ -5,7 +5,6 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod' 
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form'
 import { Button } from '../ui/button'
-import { createEvent, updateEvent } from '@/server/actions/events'
 import { DAYS_OF_WEEK_IN_ORDER } from '@/data/constants'
 import { scheduleFormSchema } from '@/schema/schedule'
 import { timeToInt } from '@/lib/utils'
@@ -13,7 +12,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { formatTimezoneOffset } from '@/lib/formatters'
 import { Fragment } from 'react'
 import { HiOutlinePlusSmall } from 'react-icons/hi2'
+import { RxCross2 } from 'react-icons/rx'
 import { Input } from '../ui/input'
+import { saveSchedule } from '@/server/actions/schedule'
 
 type Availability = {
   startTime: string
@@ -44,7 +45,7 @@ export function ScheduleForm({
 
   const { 
     append: addAvailabilty, 
-    remove: removeAvailabilty, 
+    remove: removeAvailability, 
     fields: availabilityFields 
   } = useFieldArray({
     name: 'availabilities',
@@ -177,7 +178,14 @@ export function ScheduleForm({
                           </FormItem>
                         )}
                       />
-                
+                      <Button
+                        type='button'
+                        className='size-6 p-1'
+                        variant='outline'
+                        onClick={() => removeAvailability(field.index)}
+                      >
+                        <RxCross2 />
+                      </Button>               
                     </div>
                     <FormMessage>
                       {
