@@ -10,7 +10,7 @@ import { scheduleFormSchema } from '@/schema/schedule'
 import { timeToInt } from '@/lib/utils'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
 import { formatTimezoneOffset } from '@/lib/formatters'
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import { HiOutlinePlusSmall } from 'react-icons/hi2'
 import { RxCross2 } from 'react-icons/rx'
 import { Input } from '../ui/input'
@@ -30,6 +30,7 @@ export function ScheduleForm({
     availabilities: Availability[]
   }
 }) {
+  const [successMessage, setSuccessMessage] = useState<string>()
   const form = useForm<z.infer<typeof scheduleFormSchema>>({
     resolver: zodResolver(scheduleFormSchema),
     defaultValues: {   
@@ -67,6 +68,8 @@ export function ScheduleForm({
       form.setError('root', {
         message: 'There was an error saving your schedule.'
       })
+    } else {
+      setSuccessMessage('Schedule saved.')
     }
   }
   
