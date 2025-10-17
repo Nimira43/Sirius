@@ -13,6 +13,7 @@ import { createEvent, deleteEvent, updateEvent } from '@/server/actions/events'
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '../ui/alert-dialog'
 import { DAYS_OF_WEEK_IN_ORDER } from '@/data/constants'
 import { scheduleFormSchema } from '@/schema/schedule'
+import { timeToInt } from '@/lib/utils'
 
 type Availability = {
   startTime: string
@@ -30,9 +31,14 @@ export function ScheduleForm({
 }) {
   const form = useForm<z.infer<typeof scheduleFormSchema>>({
     resolver: zodResolver(scheduleFormSchema),
-    defaultValues: event ?? {   
-      isActive: true,
-      durationInMinutes: 30   
+    defaultValues:  {   
+      timezone: 
+        schedule?.timezone ?? Intl.DateTimeFormat().
+        resolvedOptions().timeZone,
+      availabilities:
+        schedule?.availabilities.toSorted((a, b) => {
+          return timeToInt(a.startTime) - timeToInt(b.startTime)
+        })
     }
   })
 
