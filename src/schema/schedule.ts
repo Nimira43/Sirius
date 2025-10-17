@@ -26,4 +26,6 @@ export const scheduleFormSchema = z.object({
     }),
 })
 
-
+function timeToInt(time: string) {
+  return parseFloat(time.replace(':', '.'))
+}
