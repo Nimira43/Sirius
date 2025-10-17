@@ -1,6 +1,6 @@
 'use client'
 
-import { useForm } from 'react-hook-form'
+import { useFieldArray, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod' 
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form'
@@ -39,6 +39,15 @@ export function ScheduleForm({
           return timeToInt(a.startTime) - timeToInt(b.startTime)
         })
     }
+  })
+
+  const { 
+    append: addAvailabilty, 
+    remove: removeAvailabilty, 
+    fields: availabilityFields 
+  } = useFieldArray({
+    name: 'availabilities',
+    control: form.control
   })
 
   async function onSubmit(values: z.infer<typeof scheduleFormSchema>) {
