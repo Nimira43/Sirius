@@ -131,21 +131,44 @@ export function ScheduleForm({
                   <HiOutlinePlusSmall className='size-full' />
                 </Button>
                 {groupedAvailabiltyFields[dayofWeek]?.map((field, labelIndex) => (
-                  <FormField
-                    key={form.index}
-                    control={form.control}
-                    name={`availabilities.${field.index.startTime}`}
-                    render={({field}) => (
-                      <FormItem>
-                        <Input 
-                          className='w-24'
-                          aria-label={`${dayofWeek} Start Time ${labelIndex + 1}`}
-                          {...field}
-                        />
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                  <div className='flex gap-2 item-center'>
+                    <FormField
+                      control={form.control}
+                      name={`availabilities.${field.index}.startTime`}
+                      render={({field}) => (
+                        <FormItem>
+                          <FormControl>
+                            <Input 
+                              className='w-24'
+                              aria-label={
+                                `${dayofWeek} Start Time ${labelIndex + 1}`
+                              }
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name={`availabilities.${field.index}.endTime`}
+                      render={({field}) => (
+                        <FormItem>
+                          <FormControl>
+                            <Input 
+                              className='w-24'
+                              aria-label={
+                                `${dayofWeek} Start Time ${labelIndex + 1}`
+                              }
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
                 ))}
               </div>
             </Fragment> 
