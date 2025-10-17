@@ -14,7 +14,7 @@ import { createEvent, deleteEvent, updateEvent } from '@/server/actions/events'
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '../ui/alert-dialog'
 import { useTransition } from 'react'
 
-export function EventForm({
+export function ScheduleForm({
   event
 } : {
   event?: {
