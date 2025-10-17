@@ -22,5 +22,8 @@ export async function saveSchedule(
   await db.insert(ScheduleTable).values({
     ...scheduleData,
     clerkUserId: userId
+  }).onConflictDoUpdate({
+    target: ScheduleTable.clerkUserId,
+    set: scheduleData,
   })
 }
