@@ -27,16 +27,9 @@ export function ScheduleForm({
   schedule?: {
     timezone: string
     availabilities: Availability[]
-    id: string
-    name: string
-    description?: string
-    durationInMinutes: number
-    isActive: boolean
   }
 }) {
-  const [isDeletePending, startDeleteTransition] = useTransition()
-
-  const form = useForm<z.infer<typeof eventFormSchema>>({
+  const form = useForm<z.infer<typeof scheduleFormSchema>>({
     resolver: zodResolver(eventFormSchema),
     defaultValues: event ?? {   
       isActive: true,
