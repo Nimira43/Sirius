@@ -31,7 +31,7 @@ export function ScheduleForm({
 }) {
   const form = useForm<z.infer<typeof scheduleFormSchema>>({
     resolver: zodResolver(scheduleFormSchema),
-    defaultValues:  {   
+    defaultValues: {   
       timezone: 
         schedule?.timezone ?? Intl.DateTimeFormat().
         resolvedOptions().timeZone,
