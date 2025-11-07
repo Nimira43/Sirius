@@ -1,8 +1,9 @@
 import { db } from '@/drizzle/db'
+import { clerkClient } from '@clerk/nextjs/server'
 import { notFound } from 'next/navigation'
 
 export default async function BookingPage({
-  params: { clerkUserId }
+  params: { clerkUserId },
 }: {
   params: { clerkUserId: string }
 }) {
@@ -20,9 +21,16 @@ export default async function BookingPage({
 
   if (events.length === 0) return notFound()
 
+  // const { fullName } = await clerkClient().users.getUser(clerkUserId)
+
+  const { firstName, lastName } = await clerkClient.users.getUser(clerkUserId)
+  const fullName = `${firstName} ${lastName}`
+
   return (
-    <div>
-      Booking Page
+    <div className='max-w-5xl mx-auto'>
+      <div className='text-4xl md:text-5xl font-medium mb-4 text-center'>
+        {fullName}
+      </div>
     </div>
   )
 }
