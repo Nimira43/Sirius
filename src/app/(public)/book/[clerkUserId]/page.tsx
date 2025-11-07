@@ -1,4 +1,5 @@
 import { db } from '@/drizzle/db'
+import { notFound } from 'next/navigation'
 
 export default async function BookingPage({
   params: { clerkUserId }
@@ -16,6 +17,8 @@ export default async function BookingPage({
       ),
     orderBy: ({ name }, { desc }) => desc(name),
   })
+
+  if (events.length === 0) return notFound()
 
   return (
     <div>
