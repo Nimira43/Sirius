@@ -1,4 +1,4 @@
-import { db } from "@/drizzle/db"
+import { db } from '@/drizzle/db'
 
 export default async function BookingPage({
   params: { clerkUserId }
@@ -6,8 +6,15 @@ export default async function BookingPage({
   params: { clerkUserId: string }
 }) {
   const events = await db.query.EventTable.findMany({
-    where: ({ clerkUserId: userIdCol }, { eq }) => eq(userIdCol, clerkUserId),
-    orderBy: ({ createdAt }, { desc }) => desc(createdAt),
+    where: ({ 
+      clerkUserId: userIdCol,
+      isActive 
+    }, { eq, and }) => 
+      and(
+        eq(userIdCol, clerkUserId), 
+        eq(isActive, true)
+      ),
+    orderBy: ({ name }, { desc }) => desc(name),
   })
 
   return (
