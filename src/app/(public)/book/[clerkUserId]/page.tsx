@@ -28,8 +28,11 @@ export default async function BookingPage({
 
   return (
     <div className='max-w-5xl mx-auto'>
-      <div className='text-4xl md:text-5xl font-medium mb-4 text-center'>
+      <div className='text-4xl md:text-5xl text-main font-medium mb-4 text-center'>
         {fullName}
+      </div>
+      <div className='text-dark mb-6 max-w-sm mx-auto text-center'>
+        Welcome to my Scheduling page. Please follow the instructions to add an event to my Calendar.
       </div>
     </div>
   )
