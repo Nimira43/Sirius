@@ -6,7 +6,7 @@ export default async function BookingPage({
   params: { clerkUserId: string }
 }) {
   const events = await db.query.EventTable.findMany({
-    where: ({ clerkUserId }, { eq }) => eq(clerkUserId, userId),
+    where: ({ clerkUserId: userIdCol }, { eq }) => eq(userIdCol, clerkUserId),
     orderBy: ({ createdAt }, { desc }) => desc(createdAt),
   })
 
