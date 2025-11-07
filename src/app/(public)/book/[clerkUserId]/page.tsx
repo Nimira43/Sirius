@@ -1,4 +1,6 @@
-export default function BookingPage({
+import { db } from "@/drizzle/db"
+
+export default async function BookingPage({
   params: { clerkUserId }
 }: {
   params: { clerkUserId: string }
