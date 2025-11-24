@@ -55,6 +55,7 @@ type EventCardProps = {
   name: string
   description: string | null
   durationInMinutes: number
+  clerkUserId: string
 }
 
 function EventCard({
@@ -62,6 +63,7 @@ function EventCard({
   name,
   description,
   durationInMinutes,
+  clerkUserId
 }: EventCardProps) {
   return (
     <Card className='flex flex-col border-main-light'>
@@ -78,7 +80,7 @@ function EventCard({
       )}
       <CardFooter className='flex justify-end gap-2 mt-auto'>
         <Button asChild>
-          <Link href={`/book/${clerkUserId}/edit`}>Edit</Link>
+          <Link href={`/book/${clerkUserId}/${id}`}>Edit</Link>
         </Button>  
       </CardFooter>   
     </Card>
