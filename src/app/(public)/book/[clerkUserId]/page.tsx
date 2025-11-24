@@ -20,7 +20,7 @@ export default async function BookingPage({
         eq(userIdCol, clerkUserId), 
         eq(isActive, true)
       ),
-    orderBy: ({ name }, { desc }) => desc(name),
+    orderBy: ({ name }, { asc, sql }) => asc(sql`lower(${name})`),
   })
 
   if (events.length === 0) return notFound()
@@ -80,7 +80,7 @@ function EventCard({
       )}
       <CardFooter className='flex justify-end gap-2 mt-auto'>
         <Button asChild>
-          <Link href={`/book/${clerkUserId}/${id}`}>Edit</Link>
+          <Link href={`/book/${clerkUserId}/${id}`}>Select</Link>
         </Button>  
       </CardFooter>   
     </Card>
