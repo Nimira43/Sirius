@@ -36,8 +36,7 @@ export async function getCalendarEventTimes(
 }
 
 async function getOAuthClient(clerkUserId: string) {
-  const token = await clerkClient().users.getUserOauthAccessToken(clerkUserId, 'oauth_google')
-  // const token = await clerkClient.users.getUserOauthAccessToken(clerkUserId, 'oauth_google')
+  const token = await clerkClient.users.getUserOauthAccessToken(clerkUserId, 'oauth_google')
 
   if (token.data.length === 0 || token.data[0].token == null) {
     return
