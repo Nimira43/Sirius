@@ -1,7 +1,10 @@
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { db } from '@/drizzle/db'
 import { getValidTimesFromSchedule } from '@/lib/getValidTimesFromSchedule'
 import { clerkClient } from '@clerk/nextjs/server'
 import { addMonths, eachMinuteOfInterval, endOfDay, roundToNearestMinutes } from 'date-fns'
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 export default async function BookEventPage({
@@ -58,7 +61,49 @@ export default async function BookEventPage({
     event
   )
 
+  if (validTimes.length === 0) {
+    return (
+      <NoTimeSlots
+        event={event}
+        calendarUser={calendarUser}
+      />
+    )
+  }
+
   return (
     <div>Testing!!!</div>
   )
+}
+
+function NoTimeSlots({
+  event,
+  calendarUser,
+}: {
+  event: { name: string; description: string | null }
+    calendarUser: { id: string;  fullName: string | null }
+}) {
+  return (
+    <Card className='max-w-md mx-auto'>
+      <CardHeader>
+        <CardTitle>
+          Book {event.name } with {calendarUser.fullName}
+        </CardTitle>
+        {event.description && (
+          <CardDescription>
+            {event.description}
+          </CardDescription>
+        )}
+      </CardHeader>
+      <CardContent>
+        {calendarUser.fullName} is currently booked up. Please check back later or chose a shorter event.
+      </CardContent>
+      <CardFooter>
+        <Button asChild>
+          <Link href={(`/book/${calendarUser.id}`)}>
+            Choose another event
+          </Link>
+        </Button>
+      </CardFooter>
+    </Card>
+  )  
 }
