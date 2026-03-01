@@ -61,6 +61,7 @@ export async function getValidTimesFromSchedule(
 
     return eventTimes.every(
       eventTime => {
+        if (eventTime == null) return true     // experimental code
         return !areIntervalsOverlapping(
           eventTime, eventInterval
         )

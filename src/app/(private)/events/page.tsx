@@ -1,4 +1,4 @@
-import { CopyEventButton } from '@/components/forms/CopyEventButton'
+import { CopyEventButton } from '@/components/CopyEventButton' 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { db } from '@/drizzle/db'

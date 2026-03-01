@@ -1,3 +1,4 @@
+import { MeetingForm } from '@/components/forms/MeetingForm'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { db } from '@/drizzle/db'
@@ -71,7 +72,23 @@ export default async function BookEventPage({
   }
 
   return (
-    <div>Testing!!!</div>
+    <Card className='max-w-4xl mx-auto'>
+      <CardHeader>
+        <CardTitle>
+          Book {event.name} with {calendarUser.fullName}
+        </CardTitle>
+        {event.description && (
+          <CardDescription>{event.description}</CardDescription>
+        )}
+      </CardHeader>
+      <CardContent>
+        <MeetingForm
+          validTimes={validTimes}
+          eventId={event.id}
+          clerkUserId={clerkUserId}
+        />
+      </CardContent>
+    </Card>
   )
 }
 
@@ -95,13 +112,12 @@ function NoTimeSlots({
         )}
       </CardHeader>
       <CardContent>
-        {calendarUser.fullName} is currently booked up. Please check back later or chose a shorter event.
+        {calendarUser.fullName} is currently booked up. Please check back later
+        or choose a shorter event.
       </CardContent>
       <CardFooter>
         <Button asChild>
-          <Link href={(`/book/${calendarUser.id}`)}>
-            Choose another event
-          </Link>
+          <Link href={`/book/${calendarUser.id}`}>Choose Another Event</Link>
         </Button>
       </CardFooter>
     </Card>
