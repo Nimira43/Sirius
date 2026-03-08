@@ -18,7 +18,7 @@ import { CalendarIcon } from 'lucide-react'
 import { Calendar } from '../ui/calendar'
 import { Input } from '../ui/input'
 import { Textarea } from '../ui/textarea'
-
+import { createMeeting } from '@/server/actions/meetings'
 
 export function MeetingForm({
   validTimes,
@@ -237,7 +237,7 @@ export function MeetingForm({
             className='uppercase'
           >
             <Link 
-              href='/events'
+              href={`/book/${clerkUserId}`}
             >
               Cancel
             </Link>
@@ -247,7 +247,7 @@ export function MeetingForm({
             type='submit'
             className='uppercase'
           >
-            Save
+            Submit
           </Button>
         </div>
       </form>
